@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import '../controllers/notifikasi_controller.dart';
 import '../models/notifikasi_model.dart';
 
-// ══════════════════════════════════════════════════════════════════════════════
 // HALAMAN NOTIFIKASI — NotifikasiView
-// ══════════════════════════════════════════════════════════════════════════════
 
 class NotifikasiView extends StatelessWidget {
   const NotifikasiView({super.key});
@@ -45,12 +43,17 @@ class _NotifikasiHeader extends StatelessWidget {
               GestureDetector(
                 onTap: () => Get.back(),
                 child: Container(
-                  width: 38, height: 38,
+                  width: 38,
+                  height: 38,
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 16),
+                  child: const Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: Colors.white,
+                    size: 16,
+                  ),
                 ),
               ),
               const SizedBox(width: 14),
@@ -65,23 +68,32 @@ class _NotifikasiHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              Obx(() => c.hasUnread
-                  ? GestureDetector(
-                      onTap: c.tandaiSemuaDibaca,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.18),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.white24),
+              Obx(
+                () => c.hasUnread
+                    ? GestureDetector(
+                        onTap: c.tandaiSemuaDibaca,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.18),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Colors.white24),
+                          ),
+                          child: const Text(
+                            'Tandai dibaca',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ),
-                        child: const Text(
-                          'Tandai dibaca',
-                          style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    )
-                  : const SizedBox()),
+                      )
+                    : const SizedBox(),
+              ),
             ],
           ),
         ),
@@ -118,7 +130,9 @@ class _FilterChipsState extends State<_FilterChips> {
               margin: const EdgeInsets.only(right: 8),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
               decoration: BoxDecoration(
-                color: active ? const Color(0xFF0e4a6e) : const Color(0xFFf3f4f6),
+                color: active
+                    ? const Color(0xFF0e4a6e)
+                    : const Color(0xFFf3f4f6),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
@@ -152,7 +166,7 @@ class _NotifikasiList extends StatelessWidget {
 
       // Pisah hari ini & sebelumnya (dummy: unread = hari ini)
       final belumDibaca = c.items.where((n) => !n.sudahDibaca).toList();
-      final sudahDibaca  = c.items.where((n) =>  n.sudahDibaca).toList();
+      final sudahDibaca = c.items.where((n) => n.sudahDibaca).toList();
 
       return ListView(
         padding: const EdgeInsets.fromLTRB(0, 4, 0, 100),
@@ -202,9 +216,9 @@ class _NotifTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final badgeColor = NotifikasiController.tipeBadgeColor(item.tipe);
-    final icon       = NotifikasiController.tipeIcon(item.tipe);
-    final label      = NotifikasiController.tipeLabel(item.tipe);
-    final unread     = !item.sudahDibaca;
+    final icon = NotifikasiController.tipeIcon(item.tipe);
+    final label = NotifikasiController.tipeLabel(item.tipe);
+    final unread = !item.sudahDibaca;
 
     return GestureDetector(
       onTap: () => c.tandaiDibaca(item.id),
@@ -219,8 +233,20 @@ class _NotifTile extends StatelessWidget {
             width: 1.2,
           ),
           boxShadow: unread
-              ? [BoxShadow(color: badgeColor.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 3))]
-              : [BoxShadow(color: Colors.black.withOpacity(0.03), blurRadius: 4, offset: const Offset(0, 2))],
+              ? [
+                  BoxShadow(
+                    color: badgeColor.withOpacity(0.08),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
+                  ),
+                ]
+              : [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.03),
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
         ),
         child: Padding(
           padding: const EdgeInsets.all(14),
@@ -232,7 +258,8 @@ class _NotifTile extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   Container(
-                    width: 44, height: 44,
+                    width: 44,
+                    height: 44,
                     decoration: BoxDecoration(
                       color: badgeColor.withOpacity(0.12),
                       borderRadius: BorderRadius.circular(12),
@@ -241,9 +268,11 @@ class _NotifTile extends StatelessWidget {
                   ),
                   if (unread)
                     Positioned(
-                      top: -3, right: -3,
+                      top: -3,
+                      right: -3,
                       child: Container(
-                        width: 10, height: 10,
+                        width: 10,
+                        height: 10,
                         decoration: BoxDecoration(
                           color: badgeColor,
                           shape: BoxShape.circle,
@@ -263,14 +292,21 @@ class _NotifTile extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 7,
+                            vertical: 2,
+                          ),
                           decoration: BoxDecoration(
                             color: badgeColor.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Text(
                             label,
-                            style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: badgeColor),
+                            style: TextStyle(
+                              fontSize: 9,
+                              fontWeight: FontWeight.bold,
+                              color: badgeColor,
+                            ),
                           ),
                         ),
                         const Spacer(),
@@ -278,7 +314,9 @@ class _NotifTile extends StatelessWidget {
                           item.waktu,
                           style: TextStyle(
                             fontSize: 10,
-                            color: unread ? const Color(0xFF6b7280) : const Color(0xFFa8b0bd),
+                            color: unread
+                                ? const Color(0xFF6b7280)
+                                : const Color(0xFFa8b0bd),
                           ),
                         ),
                       ],
@@ -297,7 +335,9 @@ class _NotifTile extends StatelessWidget {
                       item.isi,
                       style: TextStyle(
                         fontSize: 11.5,
-                        color: unread ? const Color(0xFF374151) : const Color(0xFF9ca3af),
+                        color: unread
+                            ? const Color(0xFF374151)
+                            : const Color(0xFF9ca3af),
                         height: 1.45,
                       ),
                       maxLines: 2,
@@ -326,23 +366,36 @@ class _EmptyState extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 80, height: 80,
+            width: 80,
+            height: 80,
             decoration: BoxDecoration(
               color: const Color(0xFFe5e7eb),
               borderRadius: BorderRadius.circular(24),
             ),
-            child: const Icon(Icons.notifications_off_rounded, size: 38, color: Color(0xFF9ca3af)),
+            child: const Icon(
+              Icons.notifications_off_rounded,
+              size: 38,
+              color: Color(0xFF9ca3af),
+            ),
           ),
           const SizedBox(height: 16),
           const Text(
             'Belum ada notifikasi',
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF374151)),
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF374151),
+            ),
           ),
           const SizedBox(height: 6),
           const Text(
             'Notifikasi komplain dan pembaruan\nstatus akan muncul di sini.',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 12, color: Color(0xFF9ca3af), height: 1.5),
+            style: TextStyle(
+              fontSize: 12,
+              color: Color(0xFF9ca3af),
+              height: 1.5,
+            ),
           ),
         ],
       ),
