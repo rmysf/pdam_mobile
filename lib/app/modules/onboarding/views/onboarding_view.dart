@@ -16,7 +16,7 @@ class OnboardingView extends GetView<OnboardingController> {
             children: [
               const Spacer(flex: 2),
 
-              // Logo image
+              // Logo foto
               Image.asset(
                 'assets/images/LogoAcuRead.png',
                 width: 160,
