@@ -17,7 +17,7 @@ class BerandaPetugasView extends GetView<BerandaPetugasController> {
       final bool isScanActive = controller.navIndex.value == 2;
 
       return Scaffold(
-        // Saat scan aktif, biarkan konten mengisi sampai bawah (extendBody)
+        // Saat scan aktif, biarkan konten mengisi sampai bawah
         extendBody: isScanActive,
         body: IndexedStack(
           index: controller.navIndex.value,
