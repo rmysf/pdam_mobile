@@ -15,7 +15,7 @@ class LoginView extends GetView<LoginController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Logo kecil di tengah atas
+              // Logo
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 40, bottom: 32),
@@ -127,7 +127,10 @@ class LoginView extends GetView<LoginController> {
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: const TextStyle(color: Color(0xFFadb5bd), fontSize: 15),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
         filled: true,
         fillColor: Colors.white,
         enabledBorder: OutlineInputBorder(
@@ -150,7 +153,10 @@ class LoginView extends GetView<LoginController> {
       decoration: InputDecoration(
         hintText: 'Password',
         hintStyle: const TextStyle(color: Color(0xFFadb5bd), fontSize: 15),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
         filled: true,
         fillColor: Colors.white,
         enabledBorder: OutlineInputBorder(
@@ -186,13 +192,18 @@ class LoginView extends GetView<LoginController> {
           foregroundColor: Colors.white,
           disabledBackgroundColor: const Color(0xFF0a3d5c).withOpacity(0.6),
           elevation: 0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
         ),
         child: controller.isLoading.value
             ? const SizedBox(
                 width: 20,
                 height: 20,
-                child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 2,
+                ),
               )
             : const Text(
                 'Masuk',
@@ -208,7 +219,10 @@ class LoginView extends GetView<LoginController> {
         Expanded(child: Divider(color: Color(0xFFe5e7eb))),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 14),
-          child: Text('Atau', style: TextStyle(fontSize: 13, color: Color(0xFF9ca3af))),
+          child: Text(
+            'Atau',
+            style: TextStyle(fontSize: 13, color: Color(0xFF9ca3af)),
+          ),
         ),
         Expanded(child: Divider(color: Color(0xFFe5e7eb))),
       ],
@@ -224,7 +238,9 @@ class LoginView extends GetView<LoginController> {
         style: OutlinedButton.styleFrom(
           backgroundColor: Colors.white,
           side: const BorderSide(color: Color(0xFFe5e7eb)),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -257,7 +273,10 @@ class _GoogleIconPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final w = size.width;
     final h = size.height;
-    final rect = Rect.fromCircle(center: Offset(w / 2, h / 2), radius: w * 0.46);
+    final rect = Rect.fromCircle(
+      center: Offset(w / 2, h / 2),
+      radius: w * 0.46,
+    );
     final colors = [
       const Color(0xFF4285F4),
       const Color(0xFF34A853),
@@ -265,10 +284,10 @@ class _GoogleIconPainter extends CustomPainter {
       const Color(0xFFEA4335),
     ];
     final angles = [
-      [0.0,   1.57],
-      [1.57,  1.57],
-      [3.14,  0.79],
-      [3.93,  1.00],
+      [0.0, 1.57],
+      [1.57, 1.57],
+      [3.14, 0.79],
+      [3.93, 1.00],
     ];
     final paint = Paint()
       ..style = PaintingStyle.stroke
