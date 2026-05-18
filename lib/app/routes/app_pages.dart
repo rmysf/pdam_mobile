@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/beranda_pelanggan/bindings/beranda_pelanggan_binding.dart';
+import '../modules/beranda_pelanggan/views/beranda_pelanggan_view.dart';
 import '../modules/beranda_petugas/bindings/beranda_petugas_binding.dart';
 import '../modules/beranda_petugas/views/beranda_petugas_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -38,6 +40,13 @@ abstract class AppPages {
       transitionDuration: const Duration(milliseconds: 300),
     ),
 
-
+    // PELANGGAN
+    GetPage(
+      name: Routes.BERANDA_PELANGGAN,
+      page: () => const BerandaPelangganView(),
+      binding: BerandaPelangganBinding(),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 300),
+    ),
   ];
 }
