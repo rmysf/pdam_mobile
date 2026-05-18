@@ -16,6 +16,7 @@ class RegisterView extends GetView<RegisterController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 25),
               const Text(
                 'Buat Akun Baru',
                 style: TextStyle(
