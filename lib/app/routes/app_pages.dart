@@ -8,6 +8,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/login/bindings/register_binding.dart';   // ← tambahan
+import '../modules/login/views/register_view.dart';         // ← tambahan
 
 part 'app_routes.dart';
 
@@ -31,7 +33,16 @@ abstract class AppPages {
       transitionDuration: const Duration(milliseconds: 300),
     ),
 
-    // PETUGAS
+    // ── REGISTER ──────────────────────────────────────────────────────────
+    GetPage(
+      name: Routes.REGISTER,
+      page: () => const RegisterView(),
+      binding: RegisterBinding(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 300),
+    ),
+
+    // ── PETUGAS ───────────────────────────────────────────────────────────
     GetPage(
       name: Routes.BERANDA_PETUGAS,
       page: () => const BerandaPetugasView(),
@@ -40,7 +51,7 @@ abstract class AppPages {
       transitionDuration: const Duration(milliseconds: 300),
     ),
 
-    // PELANGGAN
+    // ── PELANGGAN ─────────────────────────────────────────────────────────
     GetPage(
       name: Routes.BERANDA_PELANGGAN,
       page: () => const BerandaPelangganView(),
